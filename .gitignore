@@ -27,6 +27,14 @@
 hs_err_pid*
 replay_pid*
 
+.vscode/*
+
+
+# Local History for Visual Studio Code
+.history/
+
+# Maven target 
+target/*
 # End of https://www.toptal.com/developers/gitignore/api/java
 
 
