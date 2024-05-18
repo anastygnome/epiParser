@@ -6,6 +6,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
@@ -71,6 +73,9 @@ public final class EpicherchelParser {
             XMLHandler handler = new XMLHandler(epigraphe);
             InputSource source = new InputSource(inputStream);
             saxParser.parse(source, handler);
+            if (epigraphe.getImgUrl().isEmpty()) {
+                epigraphe.setImgUrl(null);
+            }
             return epigraphe;
         } catch (Exception e) {
             log.error("Error parsing XML for Epigraphe", e);
@@ -109,7 +114,13 @@ public final class EpicherchelParser {
          * @param text The date string to parse.
          */
         private void handleDate(String text) {
-            epigraphe.setDate(LocalDate.parse(text, DATE_FORMATTER));
+            try {
+                if (!text.isEmpty()) {
+                    epigraphe.setDate(LocalDate.parse(text, DATE_FORMATTER));
+                }
+            } catch (DateTimeParseException e) {
+                log.error(e.toString());
+            }
         }
 
         @Override

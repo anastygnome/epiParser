@@ -24,7 +24,8 @@ public class ConfigurationLoader {
 
     }
 
-    public static final URI EPICHERCHELL_URI = initUri();
+    public static final URI EPICHERCHELL_URI = initUri("epicherchel.url");
+    public static final URI BASE_URI = initUri("application.base.url");
 
     private static void setSystemProperties() {
         configuration.getKeys().forEachRemaining(key -> {
@@ -33,9 +34,9 @@ public class ConfigurationLoader {
         });
     }
 
-    private static URI initUri() {
+    private static URI initUri(String key) {
         try {
-            return new URI(configuration.getString("epicherchel.url"));
+            return new URI(configuration.getString(key));
         } catch (URISyntaxException e) {
             throw new IllegalStateException("Invalid URI in configuration file", e);
         }
