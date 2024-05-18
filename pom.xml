@@ -21,6 +21,8 @@
     <junit.version>5.10.2</junit.version>
     <lombok.version>1.18.32</lombok.version>
     <aalto.version>1.3.2</aalto.version>
+    <apache.commons.configuration.version>2.10.1</apache.commons.configuration.version>
+    <apache.commons.beanutils.version>1.9.4</apache.commons.beanutils.version>
   </properties>
 
   <dependencyManagement>
@@ -141,11 +143,24 @@
 
     <!-- Aalto SAX Implementation-->
     <dependency>
-    <groupId>com.fasterxml</groupId>
-    <artifactId>aalto-xml</artifactId>
-    <version>${aalto.version}</version>
-</dependency>
+      <groupId>com.fasterxml</groupId>
+      <artifactId>aalto-xml</artifactId>
+      <version>${aalto.version}</version>
+    </dependency>
 
+    <!-- Apache Commons configuration-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-configuration2</artifactId>
+      <version>${apache.commons.configuration.version}</version>
+    </dependency>
+
+    <!-- Apache Commons beanUtils-->
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>${apache.commons.beanutils.version}</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -22,19 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public final class SI {
-    public static final URI EPICHERCHELL_URI;
-    private static final SAXParserFactory FACTORY;
-    static {
-        // Set Aalto as the SAX parser factory
-        System.setProperty("javax.xml.parsers.SAXParserFactory", "com.fasterxml.aalto.sax.SAXParserFactoryImpl");
-        FACTORY = SAXParserFactory.newInstance();
-        try {
-            EPICHERCHELL_URI = new URI("http://ccj-epicherchel.huma-num.fr/interface/fiche_xml2.php");
-        } catch (URISyntaxException e) {
-            throw new IllegalArgumentException(e);
-        }
-
-    }
+    private static final SAXParserFactory FACTORY = SAXParserFactory.newInstance();
 
     private SI() {
         // Private constructor to prevent instantiation
@@ -62,7 +50,7 @@ public final class SI {
      */
     public static Epigraphe getEpigraphe(int id) {
 
-        URI epURI = UriBuilder.fromUri(EPICHERCHELL_URI).queryParam("id", id).build();
+        URI epURI = UriBuilder.fromUri(ConfigurationLoader.EPICHERCHELL_URI).queryParam("id", id).build();
         return extractContentFromXML(id, epURI);
     }
 
