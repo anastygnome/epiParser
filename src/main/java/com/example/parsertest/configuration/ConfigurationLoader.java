@@ -1,4 +1,4 @@
-package com.example.parsertest;
+package com.example.parsertest.configuration;
 
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
@@ -20,6 +20,7 @@ public class ConfigurationLoader {
     }
 
     private ConfigurationLoader() {
+        throw new IllegalStateException("Utility class, cannot instantiate");
 
     }
 

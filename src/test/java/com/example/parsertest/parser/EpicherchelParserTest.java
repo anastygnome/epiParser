@@ -1,4 +1,4 @@
-package com.example.parsertest;
+package com.example.parsertest.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -7,31 +7,16 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import javax.xml.parsers.SAXParserFactory;
-
 import org.junit.jupiter.api.Test;
 
-class SITest {
-    @Test
-    void testSAXParserFactory() {
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        String expectedFactoryClass = "com.fasterxml.aalto.sax.SAXParserFactoryImpl";
-        assertEquals(expectedFactoryClass,
-                factory.getClass().getName());
-    }
+import com.example.parsertest.entities.Epigraphe;
 
-    @Test
-    void testEpicherchelUri() {
-        String expectedUri = "http://ccj-epicherchel.huma-num.fr/interface/fiche_xml2.php";
-        assertEquals(expectedUri,
-                ConfigurationLoader.EPICHERCHELL_URI.toString());
-    }
-
+class EpicherchelParserTest {
     @Test
     void testGetEpigraphe() throws Exception {
 
-        DateTimeFormatter DATE_FORMATTER = SI.XMLHandler.getDateFormatter();
-        Epigraphe f = SI.getEpigraphe(59);
+        DateTimeFormatter DATE_FORMATTER = EpicherchelParser.XMLHandler.getDateFormatter();
+        Epigraphe f = EpicherchelParser.getEpigraphe(59);
 
         assertNotNull(f);
         assertEquals(59, f.getId());

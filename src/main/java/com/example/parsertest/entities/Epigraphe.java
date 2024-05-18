@@ -1,4 +1,4 @@
-package com.example.parsertest;
+package com.example.parsertest.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

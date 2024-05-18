@@ -1,4 +1,4 @@
-package com.example.parsertest;
+package com.example.parsertest.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +13,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.example.parsertest.configuration.ConfigurationLoader;
+import com.example.parsertest.entities.Epigraphe;
+
 import jakarta.ws.rs.core.UriBuilder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,10 +24,10 @@ import lombok.extern.slf4j.Slf4j;
  * This class provides methods to extract an Epigraphe from an XML file
  */
 @Slf4j
-public final class SI {
+public final class EpicherchelParser {
     private static final SAXParserFactory FACTORY = SAXParserFactory.newInstance();
 
-    private SI() {
+    private EpicherchelParser() {
         // Private constructor to prevent instantiation
         throw new IllegalStateException("Utility class, cannot instantiate");
     }
