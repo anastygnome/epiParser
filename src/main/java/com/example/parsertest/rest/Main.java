@@ -6,14 +6,11 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import com.example.parsertest.configuration.ConfigurationLoader;
 
-import lombok.extern.slf4j.Slf4j;
 
-import java.net.URI;
 
 /**
  * Main application class to configure and start the Grizzly server with Jersey.
  */
-@Slf4j
 public class Main {
 
     public static HttpServer startServer() {

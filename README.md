@@ -1,4 +1,4 @@
-# Simple test app for parsing Epicherchel epigraphs.
+# Simple test app for parsing Epicherchel epigraphs
 
 To test just run:
 

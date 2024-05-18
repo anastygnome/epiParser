@@ -12,7 +12,7 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.version>3.8.1</maven.compiler.version>
-      <maven.exec.version>3.2.0</maven.exec.version>
+    <maven.exec.version>3.2.0</maven.exec.version>
     <main.class>com.example.parsertest.rest.Main</main.class>
     <jackson.version>2.14.0</jackson.version>
     <jaxb.version>4.0.2</jaxb.version>
@@ -36,16 +36,16 @@
         <version>${jackson.version}</version>
         <type>pom</type>
         <scope>import</scope>
-        </dependency>
-          <dependency>
-                <groupId>org.glassfish.jersey</groupId>
-                <artifactId>jersey-bom</artifactId>
-                <version>${jersey.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            </dependencies>
-    </dependencyManagement>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>${jersey.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <!-- Jakarta XML Binding API -->
     <dependency>
@@ -102,6 +102,7 @@
       <artifactId>jersey-server</artifactId>
     </dependency>
 
+    <!-- Jersey HK2 InjectionManager -->
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
@@ -174,21 +175,22 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven.compiler.version}</version>
       </plugin>
-                  <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${maven.exec.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>${main.class}</mainClass>
-                </configuration>
-            </plugin>
+      <!-- Maven Exec Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${maven.exec.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>${main.class}</mainClass>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
